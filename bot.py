@@ -1,5 +1,4 @@
 from aiogram import Bot, Dispatcher, types, executor
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 import config
 from messages import start_messages
@@ -8,7 +7,7 @@ from modules import register_all_handlers
 from keyboards import command_start_keyboard
 
 bot = Bot(token=config.TELEGRAM_API_KEY)
-dp = Dispatcher(bot, storage=MemoryStorage())
+dp = Dispatcher(bot)
 
 
 async def __on_start_up(dispathcer: Dispatcher) -> None:
