@@ -14,3 +14,19 @@ emotional_imbalance_button = InlineKeyboardButton('✅ эмоционально�
 
 help_yourself_keyboard = InlineKeyboardMarkup(row_width=1).add(nausea_and_heartburn_button, menace_button,
                                                                headache_button, emotional_imbalance_button)
+
+nausea_and_heartburn_increase_the_tariff_button = InlineKeyboardButton('✅ повысить тариф',
+                                                                       callback_data='nausea_and_heartburn_increase_the_tariff')
+nausea_and_heartburn_increase_the_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(nausea_and_heartburn_increase_the_tariff_button)
+
+menace_increase_the_tariff_button = InlineKeyboardButton('✅ повысить тариф',
+                                                         callback_data='menace_increase_the_tariff')
+menace_increase_the_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(menace_increase_the_tariff_button)
+
+headache_increase_the_tariff_button = InlineKeyboardButton('✅ повысить тариф',
+                                                           callback_data='headache_increase_the_tariff')
+headache_increase_the_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(headache_increase_the_tariff_button)
+
+emotional_imbalance_increase_the_tariff_button = InlineKeyboardButton('✅ повысить тариф',
+                                                                      callback_data='emotional_imbalance_increase_the_tariff')
+emotional_imbalance_increase_the_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(emotional_imbalance_increase_the_tariff_button)
