@@ -1,9 +1,9 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-basic_rules_button = InlineKeyboardButton('✅ Основные правила использования эфирных масел.', callback_data='basic_rules')
+basic_rules_button = InlineKeyboardButton('✅ Основные правила использования эфирных масел.', callback_data='basic_rules1')
 basic_rules_keyboard = InlineKeyboardMarkup(row_width=1).add(basic_rules_button)
 
-next_basic_rules_button = InlineKeyboardButton('✅ Далее', callback_data='next_basic_rules')
+next_basic_rules_button = InlineKeyboardButton('✅ Далее', callback_data='next_basic_rules1')
 next_basic_rules_keyboard = InlineKeyboardMarkup(row_width=1).add(next_basic_rules_button)
 
 

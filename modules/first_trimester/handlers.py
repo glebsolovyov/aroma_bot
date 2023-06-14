@@ -14,7 +14,7 @@ async def first_trimester(callback_query: types.CallbackQuery):
     await callback_query.answer()
 
 
-async def basic_rules(callback_query: types.CallbackQuery):
+async def basic_rules1(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.from_user.id,
                            text=messages_first_trimester.MESSAGE_FOR_BASIC_RULES,
                            reply_markup=keyboards.next_basic_rules_keyboard)
@@ -22,7 +22,7 @@ async def basic_rules(callback_query: types.CallbackQuery):
     await callback_query.answer()
 
 
-async def next_basic_rules(callback_query: types.CallbackQuery):
+async def next_basic_rules1(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.from_user.id,
                            text=messages_first_trimester.MESSAGE_FOR_NEXT_BASIC_RULES)
     await bot.send_message(chat_id=callback_query.from_user.id,
@@ -49,8 +49,8 @@ async def nausea_and_heartburn_increase_the_tariff(callback_query: types.Callbac
 
 async def menace(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.from_user.id,
-                            text=messages_first_trimester.MESSAGE_FOR_MENACE,
-                            reply_markup=keyboards.menace_increase_the_tariff_keyboard)
+                           text=messages_first_trimester.MESSAGE_FOR_MENACE,
+                           reply_markup=keyboards.menace_increase_the_tariff_keyboard)
 
     await callback_query.answer()
 
@@ -96,8 +96,8 @@ def register_first_trimester_handlers(dispatcher: Dispatcher) -> None:
 
     callback_query_handlers = [
         {'callback': first_trimester, 'text': 'first_trimester'},
-        {'callback': basic_rules, 'text': 'basic_rules'},
-        {'callback': next_basic_rules, 'text': 'next_basic_rules'},
+        {'callback': basic_rules1, 'text': 'basic_rules1'},
+        {'callback': next_basic_rules1, 'text': 'next_basic_rules1'},
         {'callback': nausea_and_heartburn, 'text': 'nausea_and_heartburn'},
         {'callback': nausea_and_heartburn_increase_the_tariff, 'text': 'nausea_and_heartburn_increase_the_tariff'},
         {'callback': menace, 'text': 'menace'},
