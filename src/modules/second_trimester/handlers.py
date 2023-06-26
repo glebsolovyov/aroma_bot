@@ -2,7 +2,7 @@ from aiogram import types, Dispatcher
 
 from . import keyboards
 from bot import bot
-
+from core.keyboards import keyboard_for_recommendations
 from messages import messages_second_trimester
 
 
@@ -33,16 +33,22 @@ async def bothering(callback_query: types.CallbackQuery):
 async def edema(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_FOR_EDEMA,
-                           reply_markup=keyboards.edema_increase_the_tariff_keyboard)
+                           reply_markup=keyboard_for_recommendations)
 
     await callback_query.answer()
 
 
-async def edema_increase_the_tariff(callback_query: types.CallbackQuery):
+async def back_pain(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
-                           text=messages_second_trimester.MESSAGE_FOR_EDEMA_INCREASE_THE_TARIFF)
+                           text=messages_second_trimester.MESSAGE_FOR_BACK_PAIN,
+                           reply_markup=keyboard_for_recommendations)
 
-    await callback_query.answer()
+
+async def constipation(callback_query: types.CallbackQuery):
+    await bot.send_message(chat_id=callback_query.message.chat.id,
+                           text=messages_second_trimester.MESSAGE_FOR_CONSTIPATION,
+                           reply_markup=keyboard_for_recommendations)
+
 
 
 def register_second_trimester_handlers(dispatcher: Dispatcher) -> None:
@@ -52,7 +58,8 @@ def register_second_trimester_handlers(dispatcher: Dispatcher) -> None:
         {'callback': basic_rules2, 'text': 'basic_rules2'},
         {'callback': bothering, 'text': 'bothering'},
         {'callback': edema, 'text': 'edema'},
-        {'callback': edema_increase_the_tariff, 'text': 'edema_increase_the_tariff'}
+        {'callback': back_pain, 'text': 'back_pain'},
+        {'callback': constipation, 'text': 'constipation'}
     ]
 
     for handler in callback_query_handlers:
