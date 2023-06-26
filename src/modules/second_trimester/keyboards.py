@@ -12,8 +12,6 @@ constipation_button = InlineKeyboardButton('✅ Запоры', callback_data='co
 
 bothering_keyboard = InlineKeyboardMarkup(row_width=1).add(edema_button, back_pain_button, constipation_button)
 
-edema_increase_the_tariff_button = InlineKeyboardButton('✅ повысить тариф', callback_data='edema_increase_the_tariff')
-edema_increase_the_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(edema_increase_the_tariff_button)
 
 
 

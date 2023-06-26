@@ -1,0 +1,10 @@
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+buy_base_tariff = InlineKeyboardButton('✅ Купить', callback_data='buy_base_tarif')
+buy_base_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(buy_base_tariff)
+
+buy_base_with_feedback_tariff = InlineKeyboardButton('✅ Купить', callback_data='buy_base_with_feedback')
+buy_base_with_feedback_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(buy_base_with_feedback_tariff)
+
+buy_mentoring_tariff = InlineKeyboardButton('✅ Купить', callback_data='buy_mentoring_tariff')
+buy_mentoring_tariff_keyboard = InlineKeyboardMarkup(row_width=1).add(buy_mentoring_tariff)

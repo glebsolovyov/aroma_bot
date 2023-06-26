@@ -3,8 +3,8 @@ services:
     build:
       context: .
     volumes:
-      - ./bot:/bot
+      - ./src:/src
     command: >
       sh -c "python bot.py"
     env_file:
-      - ./bot/.env
+      - src/.env

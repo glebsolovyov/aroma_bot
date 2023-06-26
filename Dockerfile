@@ -4,8 +4,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV YTHONUNBUFFERED 1
 
 COPY requirements.txt temp/requirements.txt
-COPY bot /bot
+COPY src /src
 
-WORKDIR bot
+WORKDIR src
 
 RUN pip install -r /temp/requirements.txt
