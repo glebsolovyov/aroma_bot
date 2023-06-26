@@ -43,12 +43,15 @@ async def back_pain(callback_query: types.CallbackQuery):
                            text=messages_second_trimester.MESSAGE_FOR_BACK_PAIN,
                            reply_markup=keyboard_for_recommendations)
 
+    await callback_query.answer()
+
 
 async def constipation(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_FOR_CONSTIPATION,
                            reply_markup=keyboard_for_recommendations)
 
+    await callback_query.answer()
 
 
 def register_second_trimester_handlers(dispatcher: Dispatcher) -> None:
