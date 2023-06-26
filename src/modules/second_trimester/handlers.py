@@ -7,7 +7,7 @@ from messages import messages_second_trimester
 
 
 async def second_trimester(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.from_user.id,
+    await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_FOR_SECOND_TRIMESTER,
                            reply_markup=keyboards.basic_rules_keyboard)
 
@@ -15,7 +15,7 @@ async def second_trimester(callback_query: types.CallbackQuery):
 
 
 async def basic_rules2(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.from_user.id,
+    await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_BASIC_RULES,
                            reply_markup=keyboards.next_basic_rules_keyboard)
 
@@ -23,7 +23,7 @@ async def basic_rules2(callback_query: types.CallbackQuery):
 
 
 async def bothering(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.from_user.id,
+    await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_FOR_BOTHERING,
                            reply_markup=keyboards.bothering_keyboard)
 
@@ -31,7 +31,7 @@ async def bothering(callback_query: types.CallbackQuery):
 
 
 async def edema(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.from_user.id,
+    await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_FOR_EDEMA,
                            reply_markup=keyboards.edema_increase_the_tariff_keyboard)
 
@@ -39,7 +39,7 @@ async def edema(callback_query: types.CallbackQuery):
 
 
 async def edema_increase_the_tariff(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.from_user.id,
+    await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_FOR_EDEMA_INCREASE_THE_TARIFF)
 
     await callback_query.answer()
