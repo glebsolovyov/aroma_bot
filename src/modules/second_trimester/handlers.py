@@ -7,7 +7,6 @@ from . import keyboards
 from core.keyboards import keyboard_for_recommendations
 
 from messages import messages_second_trimester
-from core.messages import MESSAGE_BASIC_RULES
 
 
 async def second_trimester(callback_query: types.CallbackQuery):
@@ -20,7 +19,7 @@ async def second_trimester(callback_query: types.CallbackQuery):
 
 async def basic_rules2(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
-                           text=MESSAGE_BASIC_RULES,
+                           text=messages_second_trimester.MESSAGE_FOR_BASIC_RULES2,
                            reply_markup=keyboards.next_basic_rules_keyboard)
 
     await callback_query.answer()
