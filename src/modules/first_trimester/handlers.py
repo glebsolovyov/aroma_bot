@@ -1,5 +1,5 @@
 from aiogram import types, Dispatcher
-
+from aiogram.types import InputMediaPhoto
 from . import keyboards
 from core.keyboards import keyboard_for_recommendations
 
@@ -35,39 +35,47 @@ async def next_basic_rules1(callback_query: types.CallbackQuery):
 
 
 async def nausea_and_heartburn(callback_query: types.CallbackQuery):
+    media = [
+        InputMediaPhoto(open('media/first_trimester/Breatne.jpeg', 'rb')),
+        InputMediaPhoto(open('media/first_trimester/Lasential Oil Supplement.jpeg', 'rb'))
+    ]
+
+    await bot.send_media_group(chat_id=callback_query.message.chat.id,
+                               media=media)
+
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_first_trimester.MESSAGE_FOR_NAUSEA_AND_HEARTBURN,
                            reply_markup=keyboard_for_recommendations)
 
-    await callback_query.answer()
-
 
 async def menace(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.message.chat.id,
-                           text=messages_first_trimester.MESSAGE_FOR_MENACE,
-                           reply_markup=keyboard_for_recommendations)
+    await bot.send_photo(chat_id=callback_query.message.chat.id,
+                         photo=open('media/first_trimester/IMG_9432.webp', 'rb'),
+                         caption=messages_first_trimester.MESSAGE_FOR_MENACE,
+                         reply_markup=keyboard_for_recommendations)
 
     await callback_query.answer()
 
 
 async def headache(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.message.chat.id,
-                           text=messages_first_trimester.MESSAGE_FOR_HEADACHE,
-                           reply_markup=keyboard_for_recommendations)
+    await bot.send_photo(chat_id=callback_query.message.chat.id,
+                         photo=open('media/first_trimester/IMG_9433.jpeg', 'rb'),
+                         caption=messages_first_trimester.MESSAGE_FOR_HEADACHE,
+                         reply_markup=keyboard_for_recommendations)
 
     await callback_query.answer()
 
 
 async def emotional_imbalance(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.message.chat.id,
-                           text=messages_first_trimester.MESSAGE_FOR_EMOTIONAL_IMBALANCE,
-                           reply_markup=keyboard_for_recommendations)
+    await bot.send_photo(chat_id=callback_query.message.chat.id,
+                         photo=open('media/first_trimester/Lavender.jpeg', 'rb'),
+                         caption=messages_first_trimester.MESSAGE_FOR_EMOTIONAL_IMBALANCE,
+                         reply_markup=keyboard_for_recommendations)
 
     await callback_query.answer()
 
 
 def register_first_trimester_handlers(dispatcher: Dispatcher) -> None:
-
     callback_query_handlers = [
         {'callback': first_trimester, 'text': 'first_trimester'},
         {'callback': basic_rules1, 'text': 'basic_rules1'},

@@ -1,4 +1,5 @@
 from aiogram import types, Dispatcher
+from aiogram.types import InputMediaPhoto
 
 from . import keyboards
 from bot import bot
@@ -31,9 +32,10 @@ async def bothering(callback_query: types.CallbackQuery):
 
 
 async def edema(callback_query: types.CallbackQuery):
-    await bot.send_message(chat_id=callback_query.message.chat.id,
-                           text=messages_second_trimester.MESSAGE_FOR_EDEMA,
-                           reply_markup=keyboard_for_recommendations)
+    await bot.send_photo(chat_id=callback_query.message.chat.id,
+                         photo=open('media/second_trimester/Lavender.jpeg', 'rb'),
+                         caption=messages_second_trimester.MESSAGE_FOR_EDEMA,
+                         reply_markup=keyboard_for_recommendations)
 
     await callback_query.answer()
 
@@ -47,6 +49,13 @@ async def back_pain(callback_query: types.CallbackQuery):
 
 
 async def constipation(callback_query: types.CallbackQuery):
+    media = [
+        InputMediaPhoto(open('media/second_trimester/IMG_9444.jpeg', 'rb')),
+        InputMediaPhoto(open('media/second_trimester/Geranium.jpeg', 'rb'))
+    ]
+    await bot.send_media_group(chat_id=callback_query.message.chat.id,
+                               media=media)
+
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_second_trimester.MESSAGE_FOR_CONSTIPATION,
                            reply_markup=keyboard_for_recommendations)
@@ -55,7 +64,6 @@ async def constipation(callback_query: types.CallbackQuery):
 
 
 def register_second_trimester_handlers(dispatcher: Dispatcher) -> None:
-
     callback_query_handlers = [
         {'callback': second_trimester, 'text': 'second_trimester'},
         {'callback': basic_rules2, 'text': 'basic_rules2'},
@@ -67,4 +75,3 @@ def register_second_trimester_handlers(dispatcher: Dispatcher) -> None:
 
     for handler in callback_query_handlers:
         dispatcher.register_callback_query_handler(**handler)
-
