@@ -1,12 +1,13 @@
 from aiogram import types, Dispatcher
 from aiogram.types import InputMediaPhoto
-from . import keyboards
-from core.keyboards import keyboard_for_recommendations
 
 from bot import bot
 
-from messages import messages_first_trimester
+from . import keyboards
+from core.keyboards import keyboard_for_recommendations
 
+from messages import messages_first_trimester
+from core.messages import MESSAGE_BASIC_RULES
 
 async def first_trimester(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
@@ -18,7 +19,7 @@ async def first_trimester(callback_query: types.CallbackQuery):
 
 async def basic_rules1(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
-                           text=messages_first_trimester.MESSAGE_FOR_BASIC_RULES,
+                           text=MESSAGE_BASIC_RULES,
                            reply_markup=keyboards.next_basic_rules_keyboard)
 
     await callback_query.answer()
