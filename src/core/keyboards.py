@@ -7,3 +7,5 @@ to_the_start = InlineKeyboardButton('✅ В начало', callback_data='to_the
 keyboard_for_recommendations = InlineKeyboardMarkup(row_width=1).add(increase_the_tariff, want_butter, to_the_start)
 
 keyboard_for_butters_and_start = InlineKeyboardMarkup(row_width=1).add(want_butter, to_the_start)
+
+keyboard_for_start = InlineKeyboardMarkup(row_width=1).add(to_the_start)

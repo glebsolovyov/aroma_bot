@@ -113,7 +113,7 @@ async def colic(callback_query: types.CallbackQuery):
                            reply_markup=keyboard_for_recommendations)
 
 
-async def temperature(callback_query: types.CallbackQuery):
+async def temperature_actions(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_mom_of_baby.MESSAGE_FOR_TEMPERATURE,
                            reply_markup=keyboard_for_butters_and_start)
@@ -153,7 +153,7 @@ def register_mom_of_baby_handlers(dispatcher: Dispatcher):
         {'callback': precautions, 'text': 'precautions'},
         {'callback': next_precautions, 'text': 'next_precautions'},
         {'callback': colic, 'text': 'colic'},
-        {'callback': temperature, 'text': 'temperature'},
+        {'callback': temperature_actions, 'text': 'temperature_actions'},
         {'callback': teething, 'text': 'teething'},
         {'callback': infectious_diseases, 'text': 'infectious_diseases'},
     ]
