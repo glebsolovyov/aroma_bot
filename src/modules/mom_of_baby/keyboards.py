@@ -36,5 +36,5 @@ infectious_diseases = InlineKeyboardButton('✅ Детские инфекцио�
 
 useful_keyboard = InlineKeyboardMarkup(row_width=1).add(colic, temperature, teething, infectious_diseases)
 
-temperature_actions = InlineKeyboardButton('✅ Действия при температуре', callback_data='temperature')
+temperature_actions = InlineKeyboardButton('✅ Действия при температуре', callback_data='temperature_actions')
 temperature_keyboard = InlineKeyboardMarkup(row_width=1).add(temperature_actions)
