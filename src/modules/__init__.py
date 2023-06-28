@@ -6,14 +6,16 @@ def register_all_handlers(dispatcher: Dispatcher) -> None:
     from .second_trimester.handlers import register_second_trimester_handlers
     from .third_trimester.handlers import register_third_trimester_handlers
     from .mom_of_baby.handlers import register_mom_of_baby_handlers
-    from .assistance_to_family.handlers import regiset_assistance_to_family_handlers
+    from .assistance_to_family.handlers import register_assistance_to_family_handlers
+    from .beauty.handlers import register_beauty_handlers
     from .tariff.handlers import register_all_tariff_handlers
     handlers = [
         register_first_trimester_handlers,
         register_second_trimester_handlers,
         register_third_trimester_handlers,
         register_mom_of_baby_handlers,
-        regiset_assistance_to_family_handlers,
+        register_assistance_to_family_handlers,
+        register_beauty_handlers,
         register_all_tariff_handlers,
     ]
 

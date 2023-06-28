@@ -1,10 +1,9 @@
 from aiogram import types, Dispatcher
-from aiogram.types import InputMediaPhoto
 
 from bot import bot
 
 from . import keyboards
-from core.keyboards import keyboard_for_recommendations, keyboard_for_butters_and_start, keyboard_for_start
+from core.keyboards import keyboard_for_butters_and_start, keyboard_for_start
 
 from messages import messages_assistance_to_family
 
@@ -108,7 +107,7 @@ async def insects(callback_query: types.CallbackQuery):
     await callback_query.answer()
 
 
-def regiset_assistance_to_family_handlers(dispathcer: Dispatcher):
+def register_assistance_to_family_handlers(dispathcer: Dispatcher):
     callback_query_handlers = [
         {'callback': assistance_to_family, 'text': 'assistance_to_family'},
         {'callback': prevention_of_infections, 'text': 'prevention_of_infections'},
