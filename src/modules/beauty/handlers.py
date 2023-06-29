@@ -3,7 +3,7 @@ from aiogram import types, Dispatcher
 from bot import bot
 
 from . import keyboards
-from core.keyboards import keyboard_for_butters_and_start, keyboard_for_start
+from core.keyboards import keyboard_for_butters_and_start
 
 from messages import messages_beauty
 
