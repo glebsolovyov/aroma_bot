@@ -1,11 +1,12 @@
 from aiogram import Bot, Dispatcher, types, executor
+from aiogram.types import InlineKeyboardMarkup
 
 import config
 
 from modules.tariff import handlers
 from modules import register_all_handlers
 
-from keyboards import command_start_keyboard
+import keyboards
 from core.keyboards import keyboard_for_start
 
 from messages import start_messages
@@ -22,9 +23,9 @@ async def __on_start_up(dispathcer: Dispatcher) -> None:
 
 @dp.message_handler(commands=['start'])
 async def command_start(message: types.Message):
-    await bot.send_message(message.chat.id, start_messages.MESSAGE_FOR_COMMAND_START)
-    await bot.send_message(message.chat.id, start_messages.MESSAGE_FOR_START_KEYBOARD,
-                           reply_markup=command_start_keyboard)
+    await bot.send_message(message.chat.id, start_messages.MESSAGE_FOR_COMMAND_START,
+                           reply_markup=keyboards.next_start_keyboard)
+
 
 
 @dp.message_handler(content_types=types.ContentType.CONTACT)
