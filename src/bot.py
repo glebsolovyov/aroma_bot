@@ -1,5 +1,6 @@
 from aiogram import Bot, Dispatcher, types, executor
-from aiogram.types import InlineKeyboardMarkup
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from aiogram.dispatcher import FSMContext
 
 import config
 
@@ -11,10 +12,11 @@ from core.keyboards import keyboard_for_start
 
 from messages import start_messages
 
-
+from core.states import TariffState, ButterState
+from modules.tariff import handlers
 
 bot = Bot(token=config.TELEGRAM_API_KEY)
-dp = Dispatcher(bot)
+dp = Dispatcher(bot, storage=MemoryStorage())
 
 
 async def __on_start_up(dispathcer: Dispatcher) -> None:
@@ -27,9 +29,8 @@ async def command_start(message: types.Message):
                            reply_markup=keyboards.next_start_keyboard)
 
 
-
-@dp.message_handler(content_types=types.ContentType.CONTACT)
-async def get_user_contact(message: types.Message):
+@dp.message_handler(content_types=types.ContentType.CONTACT, state=TariffState.contact)
+async def get_user_contact(message: types.Message, state: FSMContext):
     await bot.send_message(chat_id=message.chat.id,
                            text='Ваши данные добавлены. Скоро с вами сважутся.',
                            reply_markup=types.ReplyKeyboardRemove())
@@ -37,9 +38,31 @@ async def get_user_contact(message: types.Message):
                            text='Вернуться в главное меню',
                            reply_markup=keyboard_for_start)
 
-    await bot.send_message(chat_id='-916487809', text=f'Ссылка: t.me/{message.from_user.username}\n'
+    data = await state.get_data()
+    await bot.send_message(chat_id='-916487809', text=f'Имя: {data.get("name")}\n'
+                                                      f'Ссылка: t.me/{message.from_user.username}\n'
                                                       f'Номер телефона: {message.contact.phone_number}\n'
-                                                      f'Тариф: {handlers.Tariff.name}')
+                                                      f'Тариф: {handlers.Tariff.tariff}')
+
+    await state.finish()
+
+
+@dp.message_handler(content_types=types.ContentType.CONTACT, state=ButterState.contact)
+async def get_user_contact(message: types.Message, state: FSMContext):
+    await bot.send_message(chat_id=message.chat.id,
+                           text='Ваши данные добавлены. Скоро с вами сважутся.',
+                           reply_markup=types.ReplyKeyboardRemove())
+    await bot.send_message(chat_id=message.chat.id,
+                           text='Вернуться в главное меню',
+                           reply_markup=keyboard_for_start)
+
+    data = await state.get_data()
+    await bot.send_message(chat_id='-916487809', text=f'Имя: {data.get("name")}\n'
+                                                      f'Ссылка: t.me/{message.from_user.username}\n'
+                                                      f'Номер телефона: {message.contact.phone_number}\n'
+                                                      f'Хочет заказать масла')
+
+    await state.finish()
 
 
 # async def process_event(event, dp: Dispatcher):
