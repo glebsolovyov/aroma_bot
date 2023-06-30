@@ -80,6 +80,14 @@ async def combination(callback_query: types.CallbackQuery):
     await callback_query.answer()
 
 
+async def prone_to_allergy(callback_query: types.CallbackQuery):
+    await bot.send_message(chat_id=callback_query.message.chat.id,
+                           text=messages_beauty.MESSAGE_FOR_ALLERGIC,
+                           reply_markup=keyboard_for_butters_and_start)
+
+    await callback_query.answer()
+
+
 async def hair(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_beauty.MESSAGE_FOR_HAIR,
@@ -135,6 +143,7 @@ def register_beauty_handlers(dispatcher: Dispatcher):
         {'callback': dry, 'text': 'dry'},
         {'callback': oily, 'text': 'oily'},
         {'callback': combination, 'text': 'combination'},
+        {'callback': prone_to_allergy, 'text': 'prone_to_allergy'},
         {'callback': hair, 'text': 'hair'},
         {'callback': serum, 'text': 'serum'},
         {'callback': conditioner, 'text': 'conditioner'},
