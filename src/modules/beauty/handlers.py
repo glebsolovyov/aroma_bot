@@ -132,6 +132,8 @@ async def deodorant(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_beauty.MESSAGE_FOR_DEODARANT,
                            reply_markup=keyboard_for_butters_and_start)
+
+
 def register_beauty_handlers(dispatcher: Dispatcher):
     callback_query_handlers = [
         {'callback': beauty, 'text': 'beauty'},

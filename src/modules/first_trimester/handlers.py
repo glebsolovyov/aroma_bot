@@ -9,6 +9,7 @@ from core.keyboards import keyboard_for_recommendations
 from messages import messages_first_trimester
 from core.messages import MESSAGE_BASIC_RULES
 
+
 async def first_trimester(callback_query: types.CallbackQuery):
     await bot.send_message(chat_id=callback_query.message.chat.id,
                            text=messages_first_trimester.MESSAGE_FOR_PREGANCY_FIRST_TRIMESTER,

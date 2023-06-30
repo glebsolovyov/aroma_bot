@@ -65,9 +65,6 @@ async def get_name(message: types.Message, state: FSMContext):
     await TariffState.next()
 
 
-
-
-
 def register_all_tariff_handlers(dispatcher: Dispatcher):
     callback_query_handlers = [
         {'callback': increase_the_tariff, 'text': 'increase_the_tariff'},
@@ -76,12 +73,7 @@ def register_all_tariff_handlers(dispatcher: Dispatcher):
         {'callback': buy_mentoring_tariff, 'text': 'buy_mentoring_tariff'},
     ]
 
-    state_handlers = [
-        {'callback': get_name, 'state': TariffState.name},
-    ]
-
     for handler in callback_query_handlers:
         dispatcher.register_callback_query_handler(**handler)
 
-    for handler in state_handlers:
-        dispatcher.register_message_handler(**handler)
+    dispatcher.register_message_handler(callback=get_name, state=TariffState.name)

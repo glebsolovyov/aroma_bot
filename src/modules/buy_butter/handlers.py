@@ -35,9 +35,6 @@ async def get_name(message: types.Message, state: FSMContext):
     await ButterState.next()
 
 
-
-
-
 def register_buy_butter_handlers(dispatcher: Dispatcher):
     callback_query_handlers = [
         {'callback': want_butter, 'text': 'want_butter'},
