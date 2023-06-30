@@ -1,3 +1,6 @@
+import json
+import os
+
 from aiogram import Bot, Dispatcher, types, executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
@@ -64,18 +67,20 @@ async def get_user_contact(message: types.Message, state: FSMContext):
 
     await state.finish()
 
+DEBUG = os.environ.get('DEBUG')
+if DEBUG:
+    if __name__ == '__main__':
+        executor.start_polling(dp, skip_updates=True, on_startup=__on_start_up)
 
-# async def process_event(event, dp: Dispatcher):
-#     update = json.loads(event['body'])
-#     Bot.set_current(dp.src)
-#     update = types.Update.to_object(update)
-#     await dp.process_update(update)
-#
-#
-# async def handler(event, context):
-#     await __on_start_up(dp)
-#     await process_event(event, dp)
-#     return {'statusCode': 200, 'body': 'ok'}
+else:
+    async def process_event(event, dp: Dispatcher):
+        update = json.loads(event['body'])
+        Bot.set_current(dp)
+        update = types.Update.to_object(update)
+        await dp.process_update(update)
 
-if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True, on_startup=__on_start_up)
+
+    async def handler(event, context):
+        await __on_start_up(dp)
+        await process_event(event, dp)
+        return {'statusCode': 200, 'body': 'ok'}
