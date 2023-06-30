@@ -75,7 +75,7 @@ if DEBUG:
 else:
     async def process_event(event, dp: Dispatcher):
         update = json.loads(event['body'])
-        Bot.set_current(dp)
+        Bot.set_current(dp.bot)
         update = types.Update.to_object(update)
         await dp.process_update(update)
 
